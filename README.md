@@ -7,7 +7,7 @@ It provides real-time weather updates, 5-day forecasts, sunrise/sunset timings, 
 
 ## 🚀 Live Demo
 
-👉 [Weather App on Vercel](https://vercel.com)
+👉 [Weather App on Vercel](https://weather-black-three.vercel.app/)
 
 ## ✨ Features
 
