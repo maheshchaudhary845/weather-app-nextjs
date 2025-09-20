@@ -145,13 +145,13 @@ export default function Home() {
     try {
       let url;
       let forecastUrl;
+      const searchCity = customCity || city;
 
       if (lat && lon) {
         url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`
         forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`
       }
       else {
-        const searchCity = customCity || city;
         url = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`;
         forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`;
       }
@@ -164,7 +164,7 @@ export default function Home() {
       } else {
         setWeather({ ...data, state: state || "" })
         setError("")
-        setCity(searchCity)
+        setCity("")
       }
       // fetching forecast data
       const forecastRes = await fetch(forecastUrl)
@@ -180,7 +180,7 @@ export default function Home() {
       localStorage.setItem("forecast", JSON.stringify({ processed }))
 
     } catch (err) {
-      setError("Something went wrong");
+      setError("Something went wrong!");
     } finally {
       setLoading(false)
     }
